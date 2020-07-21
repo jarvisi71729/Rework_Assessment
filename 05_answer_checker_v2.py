@@ -38,7 +38,7 @@ while keep_going == "":
     # So user doesn't make a game too long
     # So doesn't break the game due to entering 0 or a negative number as the game will instantly end
 
-    rounds = num_check("How many rounds? ", 1, 20)
+    rounds = num_check("How many questions would you like to answer? (max 20) ", 3, 20)
     print()
 
     # Sets counters to 0

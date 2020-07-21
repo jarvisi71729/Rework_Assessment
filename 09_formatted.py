@@ -19,8 +19,8 @@ number_1 = random.randrange(1, 1000)
 number_2 = random.uniform(1, 10)
 
 # Prints the 2 random numbers with the format and has a dash above and below the statement
-statement_look("Random number: {}".format(number_1), "—")
+statement_look("Random number: {}".format(number_1), "=")
 statement_look("Random number: {}".format(number_2), "—")
 
 statement_look("Random number: {}".format(number_1), "-")
-statement_look("Random number: {}".format(number_2), "-")
+statement_look("Random number: {}".format(number_2), "\/")

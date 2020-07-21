@@ -36,7 +36,7 @@ while keep_going == "":
     # So user doesn't make a game too long
     # So doesn't break the game due to entering 0 or a negative number as the game will instantly end
 
-    rounds = num_check("How many rounds? ", 1, 20)
+    rounds = num_check("How many questions would you like to answer? (max 20) >>> ", 3, 20)
     print()
 
     # Sets counters to 0
@@ -53,18 +53,18 @@ while keep_going == "":
         print("Round ({})\n".format(round_counter))
 
         # Asks question
-        answer = qst_statement("What's 4.11 + 3.83 = ")
+        answer = qst_statement("What's 6.01 + 4.23 = ")
 
         # Checks if the answer is correct to the preceding question
-        if answer == 7.94:
+        if answer == 10.24:
             # Win statement
             win_counter += 1
-            print("correct\n")
+            print("Correct\n")
         else:
             # Lose statement
-            print("Incorrect, the answer was 7.94\n")
+            print("Incorrect, the answer was 10.24\n")
 
         # Prints how many games won/lost
         print("WON: {}  |  LOST: {}\n".format(win_counter, round_counter - win_counter))
     # Loop of function
-    keep_going = input("press <enter> to play again or any other key to stop")
+    keep_going = input("Press <enter> to play again or any key to stop. >>> ")

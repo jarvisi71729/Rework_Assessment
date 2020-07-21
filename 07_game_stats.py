@@ -35,7 +35,7 @@ while keep_going == "":
     # So user doesn't make a game too long
     # So doesn't break the game due to entering 0 or a negative number as the game will instantly end
 
-    rounds = num_check("Questions: ", 1, 20)
+    rounds = num_check("How many questions would you like to answer? (max 20) >>> ", 3, 20)
     print()
 
     # Sets counters to 0
@@ -51,16 +51,16 @@ while keep_going == "":
     # Waits for the number of rounds played reach number of rounds needed to play then stop the game
     while round_counter < rounds:
 
-        # Generates and prints the numbers at the the start of each round. (prints for testing purposes)
+        # # Generates and prints the numbers at the the start of each round. (prints for testing purposes)
         a = round(random.uniform(1, 100), 2)
-        print("#1 = {}".format(a))
+        # print("#1 = {}".format(a))
         b = round(random.uniform(1, 100), 2)
-        print("#2 = {}".format(b))
-
-        # Sum of the preceding random numbers
+        # print("#2 = {}".format(b))
+        #
+        # # Sum of the preceding random numbers
         total = round(a + b, 2)
-
-        print("Total = {:.2f}\n".format(total))
+        #
+        # print("Total = {:.2f}\n".format(total))
 
         # Adds a +1 round counter at the start of each round
         round_counter += 1
@@ -82,13 +82,13 @@ while keep_going == "":
             win_counter += 1
 
             # Win statement
-            won_lost.append('correct')
-            print("correct\n")
+            won_lost.append('Correct')
+            print("Correct\n")
 
         else:
             # Lose statement and prints the correct answer
 
-            won_lost.append('incorrect, should be {}'.format(total))
+            won_lost.append('Incorrect, should be {}'.format(total))
 
         # Collects round info when you win a game
         correct_answers.append(total)
@@ -117,4 +117,4 @@ while keep_going == "":
 
     # Loop of function to start and play again
     print()
-    keep_going = input("press <enter> to play again or any other key to stop")
+    keep_going = input("Press <enter> to play again or any key to stop. >>> ")
