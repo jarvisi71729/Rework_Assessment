@@ -1,6 +1,9 @@
-# Component seven, match history to compare answers to what user inputs
+# Component six - end of game results
+# Component purpose is to organise and print user's question history with correct or wrong statements
 
 import random
+
+# Number checking function for rounds/questions input
 
 
 def num_check(question, low, high):
@@ -15,7 +18,9 @@ def num_check(question, low, high):
                 print("You did not enter a number between {} and {}".format(low, high))
         except ValueError:
             print("Invalid input")
-# function that allows float numbers (decimal point)
+
+
+# Checks user input is a number, allows whole and decimal point numbers
 
 
 def qst_statement(question):
@@ -31,47 +36,50 @@ def qst_statement(question):
 keep_going = ""
 while keep_going == "":
 
-    # How many rounds user is going to play, range between 1 and 20
-    # So user doesn't make a game too long
-    # So doesn't break the game due to entering 0 or a negative number as the game will instantly end
+    # Minimum questions (rounds) is 3 instead of 1 so the game doesnt end quickly and gives the user's end results
+    # (component 7) variety. Max is set to 20 so the game isn't overly long
 
     rounds = num_check("How many questions would you like to answer? (max 20) >>> ", 3, 20)
     print()
 
-    # Sets counters to 0
+    # Set round counter to zero, 1 round will be added before each question
     round_counter = 0
+
+    # Set win counter to zero, 1 win will be added if user answers correctly
     win_counter = 0
 
-    # Collection of stats
+    # Game statistics - will collect results at the end of each question for after the game is finished (end results)
     correct_answers = []
     question_stats = []
     your_answer = []
     won_lost = []
 
-    # Waits for the number of rounds played reach number of rounds needed to play then stop the game
+    # To make sure game finishes when user plays all desired rounds
     while round_counter < rounds:
 
-        # # Generates and prints the numbers at the the start of each round. (prints for testing purposes)
+        # Generates two random numbers that will be used in question statement, prints numbers for testing purposes
         a = round(random.uniform(1, 100), 2)
-        # print("#1 = {}".format(a))
+        print("#1 = {}".format(a))
         b = round(random.uniform(1, 100), 2)
-        # print("#2 = {}".format(b))
-        #
-        # # Sum of the preceding random numbers
-        total = round(a + b, 2)
-        #
-        # print("Total = {:.2f}\n".format(total))
+        print("#2 = {}".format(b))
 
-        # Adds a +1 round counter at the start of each round
+        # Total sum of random numbers above (rounded to 2dp), printed for testing purposes
+        total = round(a + b, 2)
+        print("Total = {:.2f}\n".format(total))
+
+        # Adds one (+1 to counter) round before each question is printed
         round_counter += 1
 
-        # Prints the current round that the user is on
+        # Prints round counter so user can easily keep track
         print("Question ({})\n".format(round_counter))
 
+        # Question statement using randomly generated numbers
         question = "{:.2f} + {:.2f} = ".format(a, b)
 
-        # Asks question
-        answer = qst_statement("What's {}".format(question))
+        # Prints question statement for user to answer
+        answer = qst_statement("{}".format(question))
+
+        # HERE <<<<<<<<<<<<<<<
 
         # Collects your answer for the end of game stats to show what you answered
         your_answer.append(answer)

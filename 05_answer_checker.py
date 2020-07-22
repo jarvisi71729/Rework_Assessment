@@ -1,6 +1,7 @@
-# Component five, compares answer to input and adds a +1 win counter if you win round
+# Component five - answer checker
+# Component purpose is to add +1 to win counter if correct, adds nothing if user answer is incorrect
 
-# Number checker functions
+# Number checking function for rounds/questions input
 
 
 def num_check(question, low, high):
@@ -15,7 +16,9 @@ def num_check(question, low, high):
                 print("You did not enter a number between {} and {}".format(low, high))
         except ValueError:
             print("Invalid input")
-# function that allows float numbers (decimal point)
+
+
+# Checks user input is a number, allows whole and decimal point numbers
 
 
 def qst_statement(question):
@@ -28,43 +31,46 @@ def qst_statement(question):
             print("Invalid input, try again")
 
 
-# Start of loop
+# Loops entire game
 keep_going = ""
 while keep_going == "":
 
-    # How many rounds user is going to play, range between 1 and 20
-    # So user doesn't make a game too long
-    # So doesn't break the game due to entering 0 or a negative number as the game will instantly end
+    # Minimum questions (rounds) is 3 instead of 1 so the game doesnt end quickly and gives the user's end results
+    # (component 7) variety. Max is set to 20 so the game isn't overly long
 
     rounds = num_check("How many questions would you like to answer? (max 20) >>> ", 3, 20)
     print()
 
-    # Sets counters to 0
+    # Set round counter to zero, 1 round will be added before each question
     round_counter = 0
+
+    # Set win counter to zero, 1 win will be added if user answers correctly
     win_counter = 0
 
-    # Waits for the number of rounds played reach number of rounds needed to play then stop the game
+    # To make sure game finishes when user plays all desired rounds
     while round_counter < rounds:
 
-        # Adds a +1 round counter at the start of each round
+        # Adds one (+1 to counter) round before each question is printed
         round_counter += 1
 
-        # Prints the current round that the user is on
+        # Prints round counter so user can easily keep track
         print("Round ({})\n".format(round_counter))
 
-        # Asks question
+        # Prints question using set numbers (for testing purposes) - numbers will be replaced with randomly generated
+        # numbers with 2 decimal points
         answer = qst_statement("What's 6.01 + 4.23 = ")
 
-        # Checks if the answer is correct to the preceding question
+        # Checks if user input is correct (same as total sum of 2 numbers)
         if answer == 10.24:
-            # Win statement
+            # Adds +1 to win counter if user input is correct
             win_counter += 1
+            # Prints win result if user is correct
             print("Correct\n")
         else:
-            # Lose statement
+            # Prints lose result if user is wrong and prints correct answer
             print("Incorrect, the answer was 10.24\n")
 
-        # Prints how many games won/lost
+        # Prints user game results (how many wins & losses)
         print("WON: {}  |  LOST: {}\n".format(win_counter, round_counter - win_counter))
-    # Loop of function
+        # Asks user if they want to play another set of rounds or stop
     keep_going = input("Press <enter> to play again or any key to stop. >>> ")
