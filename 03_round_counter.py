@@ -1,7 +1,6 @@
-# Component three, round counter when round counter reaches a specific amount stops the program
-
-
-# Component one, Number checker for round input statement
+# Component three - round counter
+# Checks user input is within range (3, 20)
+# Checks user input is a number
 
 
 def num_check(question, low, high):
@@ -18,46 +17,17 @@ def num_check(question, low, high):
             print("Invalid input")
 
 
-def qst_statement(question):
-    valid = False
-    while not valid:
-        try:
-            response = float(input(question))
-            return response
-        except ValueError:
-            print("Invalid input, try again")
+rounds = num_check("How many questions would you like to answer? (20 max) >>> ", 3, 20)
+# Set round counter to zero, 1 round will be added before each question
+rounds_counter = 0
 
+# To make sure game finishes when user plays all desired rounds
+while rounds_counter < rounds:
+    # Prints round counter so user can easily keep track
+    print("Round {}".format(rounds_counter + 1))
+    # Adds one round (+1 to counter) before each question is printed
+    rounds_counter += 1
+    print("Question 1:\n...")
 
-keep_going = ""
-while keep_going == "":
-
-    # How many rounds user is going to play, range between 1 and 20
-    # So user doesn't make a game too long
-    # So doesn't break the game due to entering 0 or a negative number as the game will instantly end
-
-    rounds = num_check("How many questions would you like to answer? (20 max) >>> ", 3, 20)
-
-    # Sets counters to 0
-    round_counter = 0
-
-    # Waits for the number of rounds played reach number of rounds needed to play then stop the game
-    while round_counter < rounds:
-
-        # Adds a +1 round counter at the start of each round
-        round_counter += 1
-
-        # Prints the current round that the user is on
-        print("Round ({})\n".format(round_counter))
-
-        # Asks question
-        answer = qst_statement("What's 6.01 + 4.23 = ")
-
-        # Checks if the answer is correct to the preceding question
-        if answer == 10.24:
-            # Win statement
-            print("Correct\n")
-        else:
-            # Lose statement
-            print("You lost\n")
-    # Loop of function
-    keep_going = input("Press <enter> to play again or any key to stop. >>> ")
+# Farewells user
+print("Thank you for playing!")

@@ -1,4 +1,8 @@
-# Component one, Number checker for round input statement
+# Component one - round input checker
+# Checks input is greater than low (3)
+# Checks input is less than high (20)
+
+# Number checking function for rounds/questions input
 
 
 def num_check(question, low, high):
@@ -14,10 +18,9 @@ def num_check(question, low, high):
         except ValueError:
             print("Invalid input")
 
-# How many rounds user is going to play, range between 1 and 20
-# So user doesn't make a game too long
-# So doesn't break the game due to entering 0 or a negative number as the game will instantly end
 
-
+# Minimum questions (rounds) is 3 instead of 1 so the game doesnt end quickly and gives the user's end results
+# (component 7) variety. Max is set to 20 so the game isn't overly long
 question = num_check("How many questions would you like to answer? (20 max) >>> ", 3, 20)
-print("Question: {}".format(question))
+
+print("Round: {}".format(question))

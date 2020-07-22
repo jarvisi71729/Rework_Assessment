@@ -1,4 +1,5 @@
-# Component two, function that allows user to enter whole and decimal point numbers
+# Component two - float checker
+# Checks user input is a number, allows whole and decimal point numbers
 
 
 def qst_statement(question):
@@ -11,7 +12,7 @@ def qst_statement(question):
             print("Invalid input, try again")
 
 
-# Loop for testing purpose
+# Loop entire game... for testing
 keep_going = ""
 while keep_going == "":
 

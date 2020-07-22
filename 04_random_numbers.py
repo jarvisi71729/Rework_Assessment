@@ -1,12 +1,14 @@
-# Component four, generate two random 2dp values in a range for quiz question
+# Component four (1) - generating random numbers
+# Random numbers will be used in place of 'x' and 'y' in (x + y = z) where z is user answer input
 
 import random
 
 # List of ten items
-long_list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
 
-# Prints the preceding list and adds a random 2dp number between 1 and 100 to each item on list
-# 1 and 100 are the value im going with for my addition game, might change later
-for a, b in enumerate(long_list, 1):
+# Prints 10 items (from list statement) in range (1, 100) with 2 decimal points
+
+for a, b in enumerate(list, 1):
+
     print("#{} = {:.2f}".format(a, round(random.uniform(1, 100), 2)))
 
