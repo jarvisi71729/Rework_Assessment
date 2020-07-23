@@ -1,7 +1,12 @@
 # Component six - end of game results
 # Component purpose is to organise and print user's question history with correct or wrong statements
+# NOTE - from this component (6) and onwards, I switched from using a range of random numbers from 1 - 100 with 2dp
+#        to a range of *whole* random numbers from -100 - 100. This decision was made after receiving feedback about
+#        random numbers with decimals being too ~hard~
 
+# Imports random for random number generator
 import random
+
 
 # Number checking function for rounds/questions input
 
@@ -32,7 +37,7 @@ def qst_statement(question):
         except ValueError:
             print("Invalid input, try again")
 
-
+# Begins keep going loop if user wants to play again at the end of the game
 keep_going = ""
 while keep_going == "":
 
@@ -57,15 +62,17 @@ while keep_going == "":
     # To make sure game finishes when user plays all desired rounds
     while round_counter < rounds:
 
-        # Generates two random numbers that will be used in question statement, prints numbers for testing purposes
-        a = round(random.uniform(1, 100), 2)
-        print("#1 = {}".format(a))
-        b = round(random.uniform(1, 100), 2)
-        print("#2 = {}".format(b))
+        # Random number generator used for questions
+        # Generates two random numbers that will be used in question statement, *prints numbers for testing purposes*
+        a = round(random.uniform(1, 100))
+        print("#1 - {}".format(a))
 
-        # Total sum of random numbers above (rounded to 2dp), printed for testing purposes
-        total = round(a + b, 2)
-        print("Total = {:.2f}\n".format(total))
+        b = round(random.uniform(1, 100))
+        print("#2 - {}".format(b))
+
+        # Total sum of random numbers above, printed for testing purposes
+        total = round(a + b)
+        print("Total = {}\n".format(total))
 
         # Adds one (+1 to counter) round before each question is printed
         round_counter += 1
@@ -74,55 +81,54 @@ while keep_going == "":
         print("Question ({})\n".format(round_counter))
 
         # Question statement using randomly generated numbers
-        question = "{:.2f} + {:.2f} = ".format(a, b)
+        question = "{} + {} = ".format(a, b)
 
         # Prints question statement for user to answer
         answer = qst_statement("{}".format(question))
 
         # HERE <<<<<<<<<<<<<<<
 
-        # Collects your answer for the end of game stats to show what you answered
+        # Grabs your answer for game stats at the end of the game (will print answer if user guesses answer incorrectly)
         your_answer.append(answer)
 
-        # Checks if the answer is correct to the preceding question
+        # Checks if user input is correct (same as total sum of 2 numbers)
         if answer == total:
-            # +1 counter to win
+            # Adds +1 to win counter if user input is correct
             win_counter += 1
 
-            # Win statement
+            # Prints win result if user is correct, adds 'correct' data for end game stats
             won_lost.append('Correct')
             print("Correct\n")
 
         else:
-            # Lose statement and prints the correct answer
-
+            # Prints lose result if user is wrong and prints correct answer
             won_lost.append('Incorrect, should be {}'.format(total))
 
-        # Collects round info when you win a game
+        # Grabs round info - if user gets answer correct
         correct_answers.append(total)
 
-        # Collects the question of each round to show the end game stats
+        # Grabs question # for end game results (question number will be presented before results for user to keep track
+        # of what they got wrong/correct easily)
         question_stats.append(question)
 
-        # Prints end of round results showing how much games you won and lost
-        print("Correct: {}  |  Incorrect: {}\n".format(win_counter, (round_counter - win_counter)))
+        # Prints user game results (how many wins & losses)
+        print("WON: {}  |  LOST: {}\n".format(win_counter, (round_counter - win_counter)))
 
-    # Game history showing if you won/lost the round and prints the question and the answer and shows what user answered
+    # End game stats - question #, win/loss result (if user gets question incorrect, answer will be printed)
     list_count = 1
     for i in range(len(correct_answers)):
 
-        # Prints game history >>> question number, question itself
-        # user answer, win/lost stat if lost print correct answer
-        print("Question {}: {}{:.2f} \t({})".format(list_count, question_stats[i], your_answer[i], won_lost[i]))
+        # End game stats - questions, followed by results
+        print("Question {}: {}{} \t({})".format(list_count, question_stats[i], your_answer[i], won_lost[i]))
 
-        # Goes to the next item (next question number)
+        # Questions: (following)
         list_count += 1
 
     print()
 
-    # Prints the percentage of how many games you won
+    # Win percentage (wins / total rounds)
     print("Your win percentage for this game was {:.2f}%".format(100*(win_counter/rounds)))
 
-    # Loop of function to start and play again
+    # Asks user if they want to play another set of rounds or stop
     print()
     keep_going = input("Press <enter> to play again or any key to stop. >>> ")

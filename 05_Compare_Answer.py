@@ -1,4 +1,4 @@
-# Component five - answer checker
+# Component five - answer checker + win counter
 # Component purpose is to add +1 to win counter if correct, adds nothing if user answer is incorrect
 
 # Number checking function for rounds/questions input

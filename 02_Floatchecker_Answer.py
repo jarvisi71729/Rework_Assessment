@@ -1,5 +1,6 @@
 # Component two - float checker
 # Checks user input is a number, allows whole and decimal point numbers
+# *NOTE* - This component was scrapped later on (before end product Component #9)
 
 
 def qst_statement(question):
